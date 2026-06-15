@@ -51,21 +51,34 @@
 
     <p class="url" id="pdf-url"></p>
 
+    <p class="url" id="warning" hidden></p>
+
     <p class="hint">
-        <strong>Wichtig:</strong> Der QR-Code funktioniert nur, wenn die Dateien online erreichbar sind
-        (z.&nbsp;B. GitHub Pages, Netlify, eigene Website). Lokal per Doppelklick öffnen reicht nicht.
+        Nach dem Speichern: Seite neu laden (F5), dann neuen QR-Code scannen.
         <br><br>
-        <a href="https://github.com/ElyasJ7/QR-Code/blob/feature/qr-code/Zeugnisse/Ausbildungsszeugnis-Elyas%20Jebran-signed.pdf">Zur Zeugnisse-Seite</a>
+        <a href="index.html">Zur Zeugnisse-Seite</a>
     </p>
 
     <script>
-        const pdfPath = "Zeugnisse/Ausbildungsszeugnis-Elyas%20Jebran-signed.pdf";
-        const pdfUrl = new URL(pdfPath, window.location.href).href;
+        // Direktes PDF (Anzeige im Browser, kein Download) – funktioniert sofort
+        const PDF_URL =
+            "https://cdn.jsdelivr.net/gh/ElyasJ7/QR-Code@feature/qr-code/Zeugnisse/Ausbildungsszeugnis-Elyas%20Jebran-signed.pdf";
 
-        document.getElementById("pdf-url").textContent = pdfUrl;
+        const isLocal = window.location.protocol === "file:";
+        const warningEl = document.getElementById("warning");
+
+        if (isLocal) {
+            warningEl.hidden = false;
+            warningEl.style.color = "#c00";
+            warningEl.textContent =
+                "Hinweis: Sie haben qr.html lokal geöffnet. Der QR-Code zeigt auf die Online-URL unten – " +
+                "laden Sie die Seite neu, nachdem Sie die Änderungen gespeichert haben.";
+        }
+
+        document.getElementById("pdf-url").textContent = PDF_URL;
 
         new QRCode(document.getElementById("qrcode"), {
-            text: pdfUrl,
+            text: PDF_URL,
             width: 256,
             height: 256,
             correctLevel: QRCode.CorrectLevel.M
