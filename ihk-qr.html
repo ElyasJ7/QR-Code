@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR-Code – IHK Zeugnis</title>
+    <title>QR-Code – IHK Bescheinigung</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         * { box-sizing: border-box; }
@@ -44,8 +44,8 @@
     </style>
 </head>
 <body>
-    <h1>IHK Zeugnis</h1>
-    <p>QR-Code scannen, um das PDF zu öffnen:</p>
+    <h1>IHK Bescheinigung</h1>
+    <p>QR-Code scannen, um die Bescheinigung zu öffnen:</p>
 
     <div id="qrcode"></div>
 
@@ -60,9 +60,9 @@
     </p>
 
     <script>
-        // Direktes PDF (Anzeige im Browser, kein Download) – funktioniert sofort
+        // Direktes Bild (Anzeige im Browser) – funktioniert nach Push auf GitHub
         const PDF_URL =
-            "https://cdn.jsdelivr.net/gh/ElyasJ7/QR-Code@feature/qr-code/Zeugnisse/Pr%C3%BCfungszeugnis%20Fachinformatiker%20%28AO%202020%29%20Fachrichtung_%20Anwendungsentwicklung.pdf";
+            "https://cdn.jsdelivr.net/gh/ElyasJ7/QR-Code@ihk/Zeugnisse/Bescheinigung-IHK.jpeg";
 
         const isLocal = window.location.protocol === "file:";
         const warningEl = document.getElementById("warning");
